@@ -13,7 +13,7 @@
 (add-to-list 'load-path "~/_emacs/gnuserv")
 ;; (add-to-list 'load-path "~/.emacs.d")
 
-(prefer-coding-system 'chinese-gb18030-dos)
+;; (prefer-coding-system 'chinese-gb18030-dos)
 ;; (load "cedet-settings.el")
 ;; (setq stack-trace-on-error t)
 ;;(load "cedet1.1-settings.el")		
@@ -21,9 +21,9 @@
 ;;模板功能
 (add-to-list 'load-path "~/install/yasnippet-0.6.1c")
 ;;自动补全
-(add-to-list 'load-path "~/install/auto-complete-1.3.1")
+(add-to-list 'load-path "~/install/auto-complete")
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/install/auto-complete-1.3.1/dict")
+(add-to-list 'ac-dictionary-directories "~/install/auto-complete/dict")
 (ac-config-default)
 
 ;;;;读取脚本
