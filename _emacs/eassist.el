@@ -191,7 +191,18 @@ structure as toplevel function tags."
       (mapcar
        (lambda (tag) (semantic-tag-put-attribute-no-side-effect tag :parent (semantic-tag-name type)))
        (semantic-find-tags-by-class 'function (semantic-tag-type-members type))))
-    (semantic-find-tags-by-class 'type (semantic-something-to-tag-table eassist-buffer)))))
+    (semantic-find-tags-by-class 'type (semantic-something-to-tag-table eassist-buffer)))
+   ;;may be more than one namespace for c++/c
+   (mapcan
+    (lambda (type)
+      (mapcan
+       (lambda (sectype)
+	       (mapcar
+       (lambda (tag) (semantic-tag-put-attribute-no-side-effect tag :parent (semantic-tag-name sectype)))
+       (semantic-find-tags-by-class 'function (semantic-tag-type-members sectype))))
+       (semantic-find-tags-by-class 'type (semantic-tag-type-members type))))
+    (semantic-find-tags-by-class 'type (semantic-something-to-tag-table eassist-buffer)))
+   ))
 
 (defun eassist-car-if-list (thing)
   "Return car of THING if it is a list or THING itself, if not."
